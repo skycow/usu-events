@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Event Creation</title>
-
+<head lang="en">
+	<meta charset="UTF-8" />
+	<title>Event Creation</title>
+	<link rel="stylesheet" href="frontPageStyle.css" type="text/css" />
 </head>
 <body>
-<div class="topbanner">Top banner (links to other pages)</div>
-<div class="mainbody">
-<form name="EvnetCreation" action="event_create_script" method="post">
-	Name of Event: <input type="text" /><br />
-	Description: <input type="textbox" /><br />
+<div id="banner">
+	<h1>HackUSU Events Calendar</h1>
+	<h3>Search</h3>
+</div>
+<div id="header">
+	<ul>
+		<li>Calendar</li>
+		<li>Date</li>
+		<li>Categories</li>
+		<li>Login</li>
+		<li>Projects</li>
+	</ul>
+</div>
+<div id="sidebar">
+	<h3>Sidebar</h3>
+	<table id="sidebarTable">
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<div id="mainbody">
+<form name="EventCreation" action="event_create_script" method="post">
+	Event: <input type="text" /><br />
+	Description: <textarea></textarea><br />
 	<input type="submit" value="Create" /><br />
 </form>
 </div>
-<div class="bottombanner">Bottom banner (created by hackUSU)</div>
 </body>
 </html>
