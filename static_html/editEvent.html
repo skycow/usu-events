@@ -28,8 +28,19 @@
 
 <form name="EventCreation" action="event_create_script" method="post">
     Event: <input type="text" /><br />
+    Date: <input type="date" name="nDate">
+    Time: <input type="time" name="nTime">
     Description: <textarea></textarea><br />
-    <input type="submit" value="Create" /><br />
+    Category: <select name="category">
+        <option value="">New Category</option>
+        <option value="sports">Sports</option>
+        <option value="cultural">Culture</option>
+        <option value="shows">Art/Shows</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+    </select>
+    <input type="submit" value="Update" /><br />
 </form>
 </div>
 
