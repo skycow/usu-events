@@ -1,0 +1,25 @@
+#header{
+    float: left;
+    width: 850px;
+}
+li{
+    text-decoration: none;
+    display: block;
+    float: left;
+    padding: 50px;
+    text-align: center;
+}
+body{
+    width: 900px;
+    margin: auto;
+}
+#sidebar{
+    position: absolute;
+    top: 255px;
+    left: 1075px;
+}
+td{
+    background-color: #C0C0C0;
+    height: 200px;
+    width: 200px;
+}
