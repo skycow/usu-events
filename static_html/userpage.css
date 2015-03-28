@@ -1,0 +1,16 @@
+/* CSS DOCUMENT */
+td{
+border: 3px black solid;
+border-collapse: collapse;
+height: 200px;
+width: 200px;
+}
+
+h2 {
+text-decoration: underline;
+}
+
+li{
+text-decoration: none;
+}
+
