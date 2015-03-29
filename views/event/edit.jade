@@ -1,0 +1,8 @@
+extends ..\layout
+
+block content
+  h1 Edit - Change An Event
+  form(action='', method='POST')
+    include ./includes/event-form.jade
+  input(type='reset', value='Clear')
+  input(type='submit', value='Update')
