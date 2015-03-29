@@ -1,0 +1,21 @@
+{
+  "name": "usu-events",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hackUSU/usu-events",
+  "authors": [
+    "Alex Lutz <alexinslc@gmail.com>"
+  ],
+  "description": "Utah State University Events App",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
