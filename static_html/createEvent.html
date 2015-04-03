@@ -33,12 +33,12 @@
 <div id="mainbody">
 <h4>Create Event</h4>
 <form name="EventCreation" action="event_create_script" method="post">
-	Event: <input type="text" /><br />
-	Date: <input type="date"></input><br />
-	Time: <input type="time"></input><br />
-	Picture: <input type="file" name="picture" id="picture" /><br />
-	Description: <textarea placeholder="Enter description here..."></textarea><br />
-	Categories: <input type="text" /><br />
+	Event: <input type="text" name="event_name" /><br />
+	Date: <input type="date" name="event_date" /><br />
+	Time: <input type="time" name="event_time" /><br />
+	Picture: <input type="file" name="event_picture" id="picture" /><br />
+	Description: <textarea name="event_description" placeholder="Enter description here..."></textarea><br />
+	Categories: <input name="event_categories" type="text" /><br />
 	<input type="submit" value="Create" /><br />
 </form>
 </div>
