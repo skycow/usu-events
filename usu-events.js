@@ -5,6 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('usu-events.db');
+var check;
+db.serialize(function() {
+
+  db.run("CREATE TABLE if not exists user_login (UserID INTEGER PRIMARY KEY,Username TEXT,Password TEXT,Interests TEXT)");
+  db.run("CREATE TABLE if not exists event (EventID INTEGER PRIMARY KEY,Name TEXT,Start_Date BLOB,Start_Time BLOB,End_Date BLOB,End_Time BLOB,Days BLOB,Location TEXT)");
+  db.run("CREATE TABLE if not exists event_owner (EventID INTEGER, Owner INTEGER, FOREIGN KEY(EventID) REFERENCES event(EventID),FOREIGN KEY(Owner) REFERENCES user(UserID))");
+
+});
+
+db.close();
+
+
 var users = require('./routes/user');
 var events = require('./routes/event');
 
