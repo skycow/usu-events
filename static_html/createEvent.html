@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8" />
+	<title>Event Creation</title>
+	<link rel="stylesheet" href="frontPageStyle.css" type="text/css" />
+</head>
+<body>
+<div id="banner">
+	<h1>HackUSU Events Calendar</h1>
+	<h3>Search</h3>
+</div>
+<div id="header">
+	<ul>
+		<li>Calendar</li>
+		<li>Date</li>
+		<li>Categories</li>
+		<li>Login</li>
+		<li>Projects</li>
+	</ul>
+</div>
+<div id="sidebar">
+	<h3>Sidebar</h3>
+	<table id="sidebarTable">
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<div id="mainbody">
+<h4>Create Event</h4>
+<form name="EventCreation" action="event_create_script" method="post">
+	Event: <input type="text" name="event_name" /><br />
+	Date: <input type="date" name="event_date" /><br />
+	Time: <input type="time" name="event_time" /><br />
+	Picture: <input type="file" name="event_picture" id="picture" /><br />
+	Description: <textarea name="event_description" placeholder="Enter description here..."></textarea><br />
+	Categories: <input name="event_categories" type="text" /><br />
+	<input type="submit" value="Create" /><br />
+</form>
+</div>
+</body>
+</html>
