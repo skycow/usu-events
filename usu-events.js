@@ -42,6 +42,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Create a 'virtual' directory named /assets for bower_components to be accessible.
+app.use('/assets',  express.static(__dirname + '/bower_components'));
+
 app.use('/', routes);
 app.use('/user', users);
 app.use('/event', events);
