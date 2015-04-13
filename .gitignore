@@ -11,3 +11,7 @@ npm-debug.log
 
 # Ignore the DB file
 usu-events.db
+
+# Ignore bower_components
+bower_components
+bower_components/*
