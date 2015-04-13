@@ -15,3 +15,6 @@ usu-events.db
 # Ignore bower_components
 bower_components
 bower_components/*
+
+# Ignore Max OS X .DS_Store Files
+.DS_Store
