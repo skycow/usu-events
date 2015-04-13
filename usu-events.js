@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
+
+// Create database if it doesn't exist.
+// NOTE: This is only a SQLite3 Database, we may want to
+// change to PostgreSQL at a later time.
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('usu-events.db');
 var check;
@@ -19,13 +23,14 @@ db.serialize(function() {
 
 db.close();
 
-
+// Include Routes for user and event
 var users = require('./routes/user');
 var events = require('./routes/event');
 
+// Initialize Express Application
 var app = express();
 
-// view engine setup
+// View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
