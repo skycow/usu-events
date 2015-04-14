@@ -1,20 +1,28 @@
-| Title:
+| title:
 br
-input(type='text', name='title')
+input(type='text', id='Title', required)
 br
 |   Start date:
 br
-input(type='datetime-local', name='startdate')
+input(type='datetime-local', id='StartDate')
 br
 |   end date:
 br
-input(type='datetime-local', name='enddate')
+input(type='datetime-local', id='EndDate')
 br
 |   place:
 br
-input(type='text', name='place')
+input(type='text', id='Place', required)
 br
-|   Notes:
+|   notes:
 br
-input(type='text', name='notes')
+input(type='text', id='Notes')
 br
+script.
+  function EventData(){
+    this.title = $('#Title').val();
+    this.startDate = $('#StartDate').val();
+    this.endDate = $('#EndDate').val();
+    this.place = $('#Place').val();
+    this.notes = $('#Notes').val();
+  };

@@ -3,6 +3,16 @@ extends ../layout
 block content
   h1 Create your USU Events Account
   p There will hopefully be a form to create a new user here.
-  form(action='', method='POST')
+  form(id='form',action='')
     include ./includes/user-form.jade
-  input(type='submit', value='Submit')
+    input(type='reset', value ='Clear')
+    input(type='submit', value='Submit')
+  script.
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        var thisUserData = new UserData();
+        $.post('/user/new', {userData: thisUserData}, function(data){
+          alert("User created!");
+        });
+      });
+    });

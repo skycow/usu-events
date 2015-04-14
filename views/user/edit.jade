@@ -3,6 +3,16 @@ extends ../layout
 block content
   h1 Edit - Change Your Profile
   p There will hopefully be a form to change users here.
-  form(action='', method='POST')
+  form(id='form',action='')
     include ./includes/user-form.jade
-  input(type='submit', value='Update')
+    input(type='reset', value='Clear')
+    input(type='submit', value='Update')
+  script.
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        var thisUserData = new UserData();
+        $.post('/user/edit', {userData: thisUserData}, function(data){
+          alert("User updated!");
+        });
+      });
+    });

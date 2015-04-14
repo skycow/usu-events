@@ -26,4 +26,19 @@ router.get('/delete', function(req, res, next) {
   res.send('event/delete');
 });
 
+router.post('/new', function(req, res, next) {
+  var thisEventData = req.body;
+  res.send(thisEventData);
+});
+
+router.post('/edit', function(req, res, next){
+  var thisEventData = req.body;
+  res.send(thisEventData);
+});
+
+router.post('/delete', function(req, res, next){
+  var thisEventData = req.body;
+  res.send(thisEventData);
+});
+
 module.exports = router;

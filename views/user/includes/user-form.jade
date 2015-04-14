@@ -1,43 +1,52 @@
 | First name:
 br
 |     
-input(type='text', name='firstname')
+input(type='text', id='FirstName')
 |     
 br
 |     Last name:
 br
 |     
-input(type='text', name='lastname')
+input(type='text', id='LastName')
 |     
 br
 |     User name:
 br
 |     
-input(type='text', name='username')
+input(type='text', id='UserName')
 |     
 br
 |     Password:
 br
 |     
-input(type='password', name='password')
+input(type='password', id='Password')
 |     
 br
 |     Confirm Password:
 br
 |     
-input(type='password', name='confirmpassword')
+input(type='password', id='ConfirmPassword')
 |     
 br
 |     Mobile Phone:
 br
 |     
-input(type='text', name='phone')
+input(type='text', id='Phone')
 |     
 br
 |     Email Address:
 br
 |     
-input(type='text', name='email')
+input(type='text', id='Email')
 |     
 br
-|     
+script.
+  function UserData(){
+    this.fistName = $('#FistName').val();
+    this.lastName = $('#LastName').val();
+    this.userName = $('#UserName').val();
+    this.password = $('#Password').val();
+    this.confirmPassword = $('#ConfirmPassword').val();
+    this.phone = $('#Phone').val();
+    this.email = $('#Email').val();
+  };

@@ -26,4 +26,19 @@ router.get('/delete', function(req, res, next) {
   res.send('user/delete call');
 });
 
+router.post('/new', function(req, res, next) {
+  var thisUserData = req.body;
+  res.send(thisUserData);
+});
+
+router.post('/edit', function(req, res, next){
+  var thisUserData = req.body;
+  res.send(thisUserData);
+});
+
+router.post('/delete', function(req, res, next){
+  var thisUserData = req.body;
+  res.send(thisUserData);
+});
+
 module.exports = router;

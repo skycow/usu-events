@@ -2,7 +2,16 @@ extends ..\layout
 
 block content
   h1 Edit - Change An Event
-  form(action='', method='POST')
+  form(id='form',action='')
     include ./includes/event-form.jade
-  input(type='reset', value='Clear')
-  input(type='submit', value='Update')
+    input(type='reset', value='Clear')
+    input(type='submit', value='Update')
+  script.
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        var thisEventData = new EventData();
+        $.post('/event/edit', {eventData: thisEventData}, function(data){
+          alert("Event updated!");
+        });
+      });
+    });

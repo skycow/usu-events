@@ -2,7 +2,16 @@ extends ..\layout
 
 block content
   h1 Post an event
-  for(action='', method='POST')
+  form(id='form',action='')
     include ./includes/event-form.jade
-  input(type='reset', value ='Clear')
-  input(type='submit', value='Submit')
+    input(type='reset', value ='Clear')
+    input(type='submit', value='Submit')
+  script.
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        var thisEventData = new EventData();
+        $.post('/event/new', {eventData: thisEventData}, function(data){
+          alert("Event created!");
+        });
+      });
+    });
