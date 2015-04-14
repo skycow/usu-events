@@ -8,9 +8,12 @@ block content
     input(type='reset', value ='Clear')
     input(type='submit', value='Submit')
   script.
+    //Wait for document to load.
     $(document).ready(function(){
+      //Once form is submitted thisUserData (UserData) is created.
       $('#form').submit(function(){
         var thisUserData = new UserData();
+        //POST call; Sends thisUserData and alerts that a user was created.
         $.post('/user/new', {userData: thisUserData}, function(data){
           alert("User created!");
         });

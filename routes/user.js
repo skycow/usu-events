@@ -26,16 +26,19 @@ router.get('/delete', function(req, res, next) {
   res.send('user/delete call');
 });
 
+// POST users/new
 router.post('/new', function(req, res, next) {
   var thisUserData = req.body;
   res.send(thisUserData);
 });
 
+// POST /uses/edit
 router.post('/edit', function(req, res, next){
   var thisUserData = req.body;
   res.send(thisUserData);
 });
 
+// POST /users/delete
 router.post('/delete', function(req, res, next){
   var thisUserData = req.body;
   res.send(thisUserData);

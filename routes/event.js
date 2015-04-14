@@ -26,16 +26,19 @@ router.get('/delete', function(req, res, next) {
   res.send('event/delete');
 });
 
+// POST events/new
 router.post('/new', function(req, res, next) {
   var thisEventData = req.body;
   res.send(thisEventData);
 });
 
+//POST events/edit
 router.post('/edit', function(req, res, next){
   var thisEventData = req.body;
   res.send(thisEventData);
 });
 
+//POST events/delete
 router.post('/delete', function(req, res, next){
   var thisEventData = req.body;
   res.send(thisEventData);
