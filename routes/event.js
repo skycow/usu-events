@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var dbtools = require('../public/dbtools.js');
 
 /* GET events listing. */
 router.get('/', function(req, res, next) {
@@ -29,12 +30,14 @@ router.get('/delete', function(req, res, next) {
 // POST events/new
 router.post('/new', function(req, res, next) {
   var thisEventData = req.body;
+  dbtools.InsertData(thisEventData);
   res.send(thisEventData);
 });
 
 //POST events/edit
 router.post('/edit', function(req, res, next){
   var thisEventData = req.body;
+
   res.send(thisEventData);
 });
 

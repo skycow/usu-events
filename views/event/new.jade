@@ -1,4 +1,4 @@
-extends ..\layout
+extends ../layout
 
 block content
   h1 Post an event
@@ -11,9 +11,9 @@ block content
     $(document).ready(function(){
     //Once form is submitted an EventData (thisEventData) constructor is created.
       $('#form').submit(function(){
-        var thisEventData = new EventData();
+        var thisEventData = new EventFormData();
         //POST call; Sends thisEventData and alerts that an event was created.
-        $.post('/event/new', {eventData: thisEventData}, function(data){
+        $.post('/event/new', {eventFormData: thisEventData}, function(data){
           alert("Event created!");
         });
       });

@@ -14,7 +14,7 @@ block content
       $('#form').submit(function(){
         var thisUserData = new UserData();
         //POST call; Sends thisUserData and alerts that a user was created.
-        $.post('/user/new', {userData: thisUserData}, function(data){
+        $.post('/user/new', {userFormData: thisUserData}, function(data){
           alert("User created!");
         });
       });

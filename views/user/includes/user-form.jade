@@ -42,8 +42,9 @@ input(type='text', id='Email')
 br
 script.
   //UserData constructor: Represents the data in the user form.
-  function UserData(){
-    this.fistName = $('#FistName').val();
+  function UserFormData(){
+    this.type = 'user_login';
+    this.firstName = $('#FirstName').val();
     this.lastName = $('#LastName').val();
     this.userName = $('#UserName').val();
     this.password = $('#Password').val();

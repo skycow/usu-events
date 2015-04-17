@@ -14,7 +14,7 @@ block content
       $('#form').submit(function(){
         var thisUserData = new UserData();
         //POST call; Sends thisUserData and alerts that a user was updated.
-        $.post('/user/edit', {userData: thisUserData}, function(data){
+        $.post('/user/edit', {userFormData: thisUserData}, function(data){
           alert("User updated!");
         });
       });

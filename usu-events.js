@@ -5,23 +5,38 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-
+var dbtools = require('./public/dbtools.js');
 
 // Create database if it doesn't exist.
 // NOTE: This is only a SQLite3 Database, we may want to
 // change to PostgreSQL at a later time.
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('usu-events.db');
+database = new sqlite3.Database('usu-events.db');
 var check;
-db.serialize(function() {
+database.serialize(function() {
 
-  db.run("CREATE TABLE if not exists user_login (UserID INTEGER PRIMARY KEY,Username TEXT,Password TEXT,Interests TEXT)");
-  db.run("CREATE TABLE if not exists event (EventID INTEGER PRIMARY KEY,Name TEXT,Start_Date BLOB,Start_Time BLOB,End_Date BLOB,End_Time BLOB,Days BLOB,Location TEXT)");
-  db.run("CREATE TABLE if not exists event_owner (EventID INTEGER, Owner INTEGER, FOREIGN KEY(EventID) REFERENCES event(EventID),FOREIGN KEY(Owner) REFERENCES user(UserID))");
+  database.run("CREATE TABLE if not exists user_login (UserID INTEGER PRIMARY KEY,Username TEXT,Password TEXT,Interests TEXT)");
+  database.run("CREATE TABLE if not exists event (EventID INTEGER PRIMARY KEY,Name BLOB,Start_Date BLOB,Start_Time BLOB,End_Date BLOB,End_Time BLOB,Location BLOB,Notes BLOB)");
+  database.run("CREATE TABLE if not exists event_owner (EventID INTEGER, Owner INTEGER, FOREIGN KEY(EventID) REFERENCES event(EventID),FOREIGN KEY(Owner) REFERENCES user(UserID))");
 
 });
 
-db.close();
+//DEBUG ONLY
+//dbtools.DEBUG(database);
+
+//database.close();
+
+//Custom objects
+String.prototype.hashCode = function() {
+  var hash = 0, i, chr, len;
+  if (this.length == 0) return hash;
+  for (i = 0, len = this.length; i < len; i++) {
+    chr   = this.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};
 
 // Include Routes for user and event
 var users = require('./routes/user');
@@ -79,6 +94,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

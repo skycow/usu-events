@@ -1,4 +1,4 @@
-extends ..\layout
+extends ../layout
 
 block content
   h1 Edit - Change An Event
@@ -13,7 +13,7 @@ block content
       $('#form').submit(function(){
         var thisEventData = new EventData();
         //POST call; Sends thisEventData and alerts that an event was created.
-        $.post('/event/edit', {eventData: thisEventData}, function(data){
+        $.post('/event/edit', {eventFormData: thisEventData}, function(data){
           alert("Event updated!");
         });
       });
