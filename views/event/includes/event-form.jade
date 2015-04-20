@@ -27,15 +27,14 @@ br
 input(type='text', id='Notes')
 br
 script.
-  //EventData Constructor: Represents the data in the event form.
-  EventFormData = function(){
-    this.table = 'event';
-    this.eventID = 0;
-    this.title = $('#Title').val();
-    this.Start_Date = $('#StartDate').val();
-    this.Start_Time = $('#StartTime').val();
-    this.End_Date = $('#EndDate').val();
-    this.End_Time = $('#EndTime').val();
-    this.Location = $('#Place').val();
-    this.Notes = $('#Notes').val();
-  };
+ //EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
+ //and represents the data for a new table/data.
+ function EventData(name, startDate, startTime, endDate, endTime, location, notes) {
+  this.name = name;
+  this.startDate = startDate;
+  this.startTime = startTime;
+  this.endDate = endDate;
+  this.endTime = endTime;
+  this.location = location;
+  this.notes = notes;
+ }

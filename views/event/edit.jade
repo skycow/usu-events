@@ -11,9 +11,11 @@ block content
     $(document).ready(function(){
       //Once form is submitted an thisEventData (EventData) is created.
       $('#form').submit(function(){
-        var thisEventData = new EventData();
+        // thisEventData variable.
+        var thisEventData = new EventData($('#Title').val(), $('#StartDate').val(), $('#StartTime').val(), $('#EndDate').val(), $('#EndTime').val(), $('#Place').val(), $('#Notes').val());
+
         //POST call; Sends thisEventData and alerts that an event was created.
-        $.post('/event/edit', {eventFormData: thisEventData}, function(data){
+        $.post('/event/edit', {eventData: thisEventData}, function(data){
           alert("Event updated!");
         });
       });
