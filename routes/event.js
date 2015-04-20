@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET events/new */
-router.get('/new', function(req, res, next) {
+router.get('/new/:id([0-9]+)', function(req, res, next) {
+  console.log(req.params.id);
   res.render('event/new');
 });
 
@@ -18,7 +19,7 @@ router.get('/view', function(req, res, next) {
 });
 
 /* GET events/edit */
-router.get('/edit', function(req, res, next) {
+router.get('/edit/:id([0-9]+)', function(req, res, next) {
   res.render('event/edit');
 });
 

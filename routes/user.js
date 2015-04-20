@@ -13,7 +13,7 @@ router.get('/new', function(req, res, next) {
 });
 
 /* GET /users/edit Form. */
-router.get('/edit', function(req, res, next) {
+router.get('/edit/:id([0-9]+)', function(req, res, next) {
   res.render('user/edit');
 });
 
@@ -72,5 +72,6 @@ function UserData(firstname, lastname, username, password, confirmpassword, phon
   this.confirmpassword = confirmpassword;
   this.phone = phone;
   this.email = email;
+  this.id = null;
 }
 UserData.prototype = new dbtools.DBData(usuevents, 'userLogin');

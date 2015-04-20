@@ -15,15 +15,21 @@ usuevents = dbtools.CreateDatabase('usuevents');
 //Inherit DBData for UserData/EventData.
 UserData.prototype = new dbtools.DBData(usuevents, 'userLogin');
 EventData.prototype = new dbtools.DBData(usuevents, 'event');
+UserData.prototype.new = function(firstname, lastname, username, password, confirmpassword, phone, email){return new UserData(firstname, lastname, username, password, confirmpassword, phone, email)};
 
 //Table variables.
 var eventCreator = new EventData('STRING', 'BLOB', 'BLOB', 'BLOB', 'BLOB', 'STRING', 'STRING');
 var userLoginCreator = new UserData('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'BLOB', 'STRING');
 
+var testUser= new UserData();
+testUser.id = 1;
+
 //Creates a new Table for usuevents called event.
 dbtools.CreateTable(eventCreator);
 dbtools.CreateTable(userLoginCreator);
 //endregion
+
+dbtools.SelectData(testUser);
 
 // Include Routes for user and event
 var users = require('./routes/user');
@@ -94,6 +100,7 @@ function UserData(firstname, lastname, username, password, confirmpassword, phon
     this.confirmpassword = confirmpassword;
     this.phone = phone;
     this.email = email;
+    this.id = null;
 }
 
 //EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
@@ -106,6 +113,7 @@ function EventData(name, startDate, startTime, endDate, endTime, location, notes
     this.endTime = endTime;
     this.location = location;
     this.notes = notes;
+    this.id = null;
 }
 //endregion
 
