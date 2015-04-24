@@ -5,23 +5,31 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+var dbtools = require('./public/dbtools.js');
 
+//region ---Dbtools Logic---
 
-// Create database if it doesn't exist.
-// NOTE: This is only a SQLite3 Database, we may want to
-// change to PostgreSQL at a later time.
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('usu-events.db');
-var check;
-db.serialize(function() {
+//Creates a new Database called usuevents.
+usuevents = dbtools.CreateDatabase('usuevents');
 
-  db.run("CREATE TABLE if not exists user_login (UserID INTEGER PRIMARY KEY,Username TEXT,Password TEXT,Interests TEXT)");
-  db.run("CREATE TABLE if not exists event (EventID INTEGER PRIMARY KEY,Name TEXT,Start_Date BLOB,Start_Time BLOB,End_Date BLOB,End_Time BLOB,Days BLOB,Location TEXT)");
-  db.run("CREATE TABLE if not exists event_owner (EventID INTEGER, Owner INTEGER, FOREIGN KEY(EventID) REFERENCES event(EventID),FOREIGN KEY(Owner) REFERENCES user(UserID))");
+//Inherit DBData for UserData/EventData.
+UserData.prototype = new dbtools.DBData(usuevents, 'userLogin');
+EventData.prototype = new dbtools.DBData(usuevents, 'event');
+UserData.prototype.new = function(firstname, lastname, username, password, confirmpassword, phone, email){return new UserData(firstname, lastname, username, password, confirmpassword, phone, email)};
 
-});
+//Table variables.
+var eventCreator = new EventData('STRING', 'BLOB', 'BLOB', 'BLOB', 'BLOB', 'STRING', 'STRING');
+var userLoginCreator = new UserData('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'BLOB', 'STRING');
 
-db.close();
+var testUser= new UserData();
+testUser.id = 1;
+
+//Creates a new Table for usuevents called event.
+dbtools.CreateTable(eventCreator);
+dbtools.CreateTable(userLoginCreator);
+//endregion
+
+//dbtools.SelectData(testUser);
 
 // Include Routes for user and event
 var users = require('./routes/user');
@@ -80,5 +88,33 @@ app.use(function(err, req, res, next) {
     });
 });
 
+//region ---Custom Constructors---
+
+//UserData Constructor: takes firstname(string), lastname(string), username(string), password(string),confirmpassword(string), phone(string), email(string)
+//and represents the data for a new table/date.
+function UserData(firstname, lastname, username, password, confirmpassword, phone, email){
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.username = username;
+    this.password = password;
+    this.confirmpassword = confirmpassword;
+    this.phone = phone;
+    this.email = email;
+    this.id = null;
+}
+
+//EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
+//and represents the data for a new table/data.
+function EventData(name, startDate, startTime, endDate, endTime, location, notes){
+    this.name = name;
+    this.startDate = startDate;
+    this.startTime = startTime;
+    this.endDate = endDate;
+    this.endTime = endTime;
+    this.location = location;
+    this.notes = notes;
+    this.id = null;
+}
+//endregion
 
 module.exports = app;

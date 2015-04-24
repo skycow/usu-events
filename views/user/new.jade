@@ -12,9 +12,9 @@ block content
     $(document).ready(function(){
       //Once form is submitted thisUserData (UserData) is created.
       $('#form').submit(function(){
-        var thisUserData = new UserData();
+        var thisUserData = new UserData($('#firstname').val(), $('#lastname').val(), $('#username').val(), $('#password').val(), $('#confirmpassword').val(), $('#phone').val(), $('#email').val());
         //POST call; Sends thisUserData and alerts that a user was created.
-        $.post('/user/new', {userData: thisUserData}, function(data){
+        $.post('/user/new', {userFormData: thisUserData}, function(data){
           alert("User created!");
         });
       });

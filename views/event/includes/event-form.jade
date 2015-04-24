@@ -4,11 +4,19 @@ input(type='text', id='Title', required)
 br
 |   Start date:
 br
-input(type='datetime-local', id='StartDate')
+input(type='date', id='StartDate')
+br
+|   Start time:
+br
+input(type='time', id='StartTime')
 br
 |   end date:
 br
-input(type='datetime-local', id='EndDate')
+input(type='date', id='EndDate')
+br
+|   end time:
+br
+input(type='time', id='EndTime')
 br
 |   place:
 br
@@ -19,11 +27,14 @@ br
 input(type='text', id='Notes')
 br
 script.
-  //EventData Constructor: Represents the data in the event form.
-  function EventData(){
-    this.title = $('#Title').val();
-    this.startDate = $('#StartDate').val();
-    this.endDate = $('#EndDate').val();
-    this.place = $('#Place').val();
-    this.notes = $('#Notes').val();
-  };
+ //EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
+ //and represents the data for a new table/data.
+ function EventData(name, startDate, startTime, endDate, endTime, location, notes) {
+  this.name = name;
+  this.startDate = startDate;
+  this.startTime = startTime;
+  this.endDate = endDate;
+  this.endTime = endTime;
+  this.location = location;
+  this.notes = notes;
+ }

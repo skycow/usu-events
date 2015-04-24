@@ -12,9 +12,10 @@ block content
     $(document).ready(function(){
     //Once form is submitted thisUserData (UserData) is created.
       $('#form').submit(function(){
-        var thisUserData = new UserData();
+        // creates the variable thisUserData as a new UserData.
+        var thisUserData = new UserData($('#firstname').val(), $('#lastname').val(), $('#username').val(), $('#password').val(), $('#confirmpassword').val(), $('#phone').val(), $('#email').val());
         //POST call; Sends thisUserData and alerts that a user was updated.
-        $.post('/user/edit', {userData: thisUserData}, function(data){
+        $.post('/user/edit', {userFormData: thisUserData}, function(data){
           alert("User updated!");
         });
       });

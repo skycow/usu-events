@@ -1,4 +1,4 @@
-extends ..\layout
+extends ../layout
 
 block content
   h1 Post an event
@@ -9,9 +9,10 @@ block content
   script.
     //Wait for document to load.
     $(document).ready(function(){
-    //Once form is submitted an EventData (thisEventData) constructor is created.
       $('#form').submit(function(){
-        var thisEventData = new EventData();
+        // thisEventData variable.
+        var thisEventData = new EventData($('#Title').val(), $('#StartDate').val(), $('#StartTime').val(), $('#EndDate').val(), $('#EndTime').val(), $('#Place').val(), $('#Notes').val());
+
         //POST call; Sends thisEventData and alerts that an event was created.
         $.post('/event/new', {eventData: thisEventData}, function(data){
           alert("Event created!");
