@@ -29,7 +29,7 @@ dbtools.CreateTable(eventCreator);
 dbtools.CreateTable(userLoginCreator);
 //endregion
 
-dbtools.SelectData(testUser);
+//dbtools.SelectData(testUser);
 
 // Include Routes for user and event
 var users = require('./routes/user');
