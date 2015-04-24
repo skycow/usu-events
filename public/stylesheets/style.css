@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+#new-user-button {
+  float: right;
+}
+
+  #new-user-button:after {
+    clear: both;
+  }
+
+.user-table-actions {
+  text-align: right;
+}
+
+.user-table {
+  padding: 20px;
+}
+
+.user-action-button {
+  margin: 5px 10px 10px 0px;
+}
