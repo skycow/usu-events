@@ -1,28 +1,37 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 50px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-a {
-  color: #00B7FF;
+
+.hackUSU-form {
+  max-width: 700px;
+  padding: 15px;
+  margin: 0 auto;
 }
 
-#new-user-button {
-  float: right;
+.navbar {
+  background-color: #193441;
+  color: #e2e2e2;
 }
 
-  #new-user-button:after {
-    clear: both;
-  }
-
-.user-table-actions {
-  text-align: right;
+.navbar-inverse .navbar-toggle {
+  border-color: #e2e2e2;
 }
 
-.user-table {
-  padding: 20px;
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+  background-color: #193441;
 }
 
-.user-action-button {
-  margin: 5px 10px 10px 0px;
+.navbar-brand {
+
+}
+
+.navbar-brand img {
+  height: 30px;
+  width: auto;
+}
+
+.fa-icon {
+  padding-right: 8px;
 }
