@@ -1,7 +1,4 @@
 var sqlite3 = require('sqlite3').verbose();
-//region ReadMe/HowTo
-// HowTO: Coming soon...
-//endregion
 
 dbtools = (function () {
 
@@ -57,6 +54,24 @@ dbtools = (function () {
     });
   }
 
+  //SetData function: takes dbData(DBData) and sets the data located at its id to this new set.
+  //Usage: dbtools.setData(thisData);
+  function SetData(dbData){
+    var valueArray = [], dataArray = [], finalArray = [];
+    var values = Object.keys(dbData);
+    for(var key in values){
+      valueArray[valueArray.length] = values[key];
+      dataArray[dataArray.length] = dbData[values[key]];
+    }
+    for(var key in dataArray){
+      finalArray[finalArray.length] = valueArray[key] +'= '+ JSON.stringify(dataArray[key]).replace(/^\[|]$/g, '');
+    }
+    console.log(finalArray.toString());
+    dbData.database.serialize(function(){
+      dbData.database.run("UPDATE "+dbData.table+" SET "+finalArray.toString()+" WHERE ID = "+dbData.id+"");
+    });
+  }
+
   //DBData Constructor: takes database(sqlite3.Database) and table(string)
   //Parent class for Data constructors.
   DBData = function(database, table){
@@ -69,6 +84,7 @@ dbtools = (function () {
     CreateTable: CreateTable,
     InsertData: InsertData,
     SelectData: SelectData,
+    SetData: SetData,
     DBData: DBData
   };
 })();

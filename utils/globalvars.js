@@ -3,9 +3,9 @@
  */
 //Global Variables used on client or server.
 
-var dbtools = require('../Utils/dbtools.js');
+var dbtools = require('../Utils/dbtools');
 
-globalvars = (function (name) {
+globalvars = (function () {
 
 //Creates a new Database called usuevents.
     var usuevents = dbtools.CreateDatabase('usuevents');
@@ -14,7 +14,7 @@ globalvars = (function (name) {
 
 //UserData Constructor: takes firstname(string), lastname(string), username(string), password(string),confirmpassword(string), phone(string), email(string)
 //and represents the data for a new table/date.
-    function UserData(firstname, lastname, username, password, confirmpassword, phone, email) {
+    var UserData = function(firstname, lastname, username, password, confirmpassword, phone, email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
@@ -23,12 +23,12 @@ globalvars = (function (name) {
         this.phone = phone;
         this.email = email;
         this.id = null;
-    }
+    };
 
-//EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
+//EventData Constructor: takes title(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
 //and represents the data for a new table/data.
-    function EventData(name, startDate, startTime, endDate, endTime, location, notes) {
-        this.name = name;
+    var EventData = function(title, startDate, startTime, endDate, endTime, location, notes) {
+        this.title = title;
         this.startDate = startDate;
         this.startTime = startTime;
         this.endDate = endDate;
@@ -36,7 +36,7 @@ globalvars = (function (name) {
         this.location = location;
         this.notes = notes;
         this.id = null;
-    }
+    };
 
 //Inherit DBData for UserData/EventData.
     UserData.prototype = new dbtools.DBData(usuevents, 'userLogin');

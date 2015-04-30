@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-var dbtools = require('./utils/dbtools.js');
-var GVs = require('./Utils/globalvars.js');
+var dbtools = require('./utils/dbtools');
+var GVs = require('./utils/globalvars');
 
 //region ---Dbtools Logic---
 
@@ -14,15 +14,10 @@ var GVs = require('./Utils/globalvars.js');
 var eventCreator = new GVs.UserData('STRING', 'BLOB', 'BLOB', 'BLOB', 'BLOB', 'STRING', 'STRING');
 var userLoginCreator = new GVs.UserData('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'BLOB', 'STRING');
 
-var testUser= new GVs.UserData();
-testUser.id = 1;
-
 //Creates a new Table for usuevents called event.
 dbtools.CreateTable(eventCreator);
 dbtools.CreateTable(userLoginCreator);
 //endregion
-
-//dbtools.SelectData(testUser);
 
 // Include Routes for user and event
 var users = require('./routes/user');
