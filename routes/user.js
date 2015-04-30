@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var dbtools = require('../public/dbtools.js');
+var dbtools = require('../utils/dbtools.js');
+var GVs = require('../utils/globalvars.js');
 
 /* GET /users listing. */
 router.get('/', function(req, res, next) {
@@ -14,7 +15,20 @@ router.get('/new', function(req, res, next) {
 
 /* GET /users/edit Form. */
 router.get('/edit/:id([0-9]+)', function(req, res, next) {
-  res.render('user/edit');
+  var thisData = new GVs.UserData();
+  dbtools.SelectData(req.params.id, thisData.database, thisData.table, function(object){
+    thisData.id = object[0];
+    thisData.firstname = object[1];
+    thisData.lastname = object[2];
+    thisData.username = object[3];
+    thisData.password = object[4];
+    thisData.confirmpassword = object[5];
+    thisData.phone = object[6];
+    thisData.email = object[7];
+
+    res.render('user/edit', {data: thisData});
+
+  });
 });
 
 /* GET /users/view call */
@@ -61,17 +75,3 @@ router.post('/delete', function(req, res, next){
 });
 
 module.exports = router;
-
-//UserData Constructor: takes firstname(string), lastname(string), username(string), password(string),confirmpassword(string), phone(string), email(string)
-//and represents the data for a new table/date.
-function UserData(firstname, lastname, username, password, confirmpassword, phone, email){
-  this.firstname = firstname;
-  this.lastname = lastname;
-  this.username = username;
-  this.password = password;
-  this.confirmpassword = confirmpassword;
-  this.phone = phone;
-  this.email = email;
-  this.id = null;
-}
-UserData.prototype = new dbtools.DBData(usuevents, 'userLogin');

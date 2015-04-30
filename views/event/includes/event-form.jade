@@ -1,40 +1,28 @@
 | title:
 br
-input(type='text', id='Title', required)
+input(type='text', id='name', required)
 br
 |   Start date:
 br
-input(type='date', id='StartDate')
+input(type='date', id='startdate')
 br
 |   Start time:
 br
-input(type='time', id='StartTime')
+input(type='time', id='starttime')
 br
 |   end date:
 br
-input(type='date', id='EndDate')
+input(type='date', id='enddate')
 br
 |   end time:
 br
-input(type='time', id='EndTime')
+input(type='time', id='endtime')
 br
 |   place:
 br
-input(type='text', id='Place', required)
+input(type='text', id='location', required)
 br
 |   notes:
 br
-input(type='text', id='Notes')
+input(type='text', id='notes')
 br
-script.
- //EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
- //and represents the data for a new table/data.
- function EventData(name, startDate, startTime, endDate, endTime, location, notes) {
-  this.name = name;
-  this.startDate = startDate;
-  this.startTime = startTime;
-  this.endDate = endDate;
-  this.endTime = endTime;
-  this.location = location;
-  this.notes = notes;
- }

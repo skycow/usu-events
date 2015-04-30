@@ -9,10 +9,18 @@ block content
   script.
     //Wait for document to load.
     $(document).ready(function(){
+      $('#name').val('#{data.name}');
+      $('#startdate').val('#{data.startDate}');
+      $('#starttime').val('#{data.startTime}');
+      $('#enddate').val('#{data.endDate}');
+      $('#endtime').val('#{data.endTime}');
+      $('#location').val('#{data.location}');
+      $('#notes').val('#{data.notes}');
+
       //Once form is submitted an thisEventData (EventData) is created.
       $('#form').submit(function(){
         // thisEventData variable.
-        var thisEventData = new EventData($('#Title').val(), $('#StartDate').val(), $('#StartTime').val(), $('#EndDate').val(), $('#EndTime').val(), $('#Place').val(), $('#Notes').val());
+        var thisEventData = new GVs.EventData($('#Title').val(), $('#StartDate').val(), $('#StartTime').val(), $('#EndDate').val(), $('#EndTime').val(), $('#Place').val(), $('#Notes').val());
 
         //POST call; Sends thisEventData and alerts that an event was created.
         $.post('/event/edit', {eventData: thisEventData}, function(data){

@@ -1,31 +1,18 @@
 var sqlite3 = require('sqlite3').verbose();
-
 //region ReadMe/HowTo
 // HowTO: Coming soon...
 //endregion
 
-dbtools = (function (name) {
-  // NOTE: pending removal
-  function CreateDatabaseee(){
-    // Create database if it doesn't exist.
-    // NOTE: This is only a SQLite3 Database, we may want to
-    // change to PostgreSQL at a later time.
-    //name = new sqlite3.Database(name+'.db');
-    //database.serialize(function() {
-
-      //database.run("CREATE TABLE if not exists user_login (UserID INTEGER PRIMARY KEY,Username TEXT,Password TEXT,Interests TEXT)");
-      //database.run("CREATE TABLE if not exists event (EventID INTEGER PRIMARY KEY,Name BLOB,Start_Date BLOB,Start_Time BLOB,End_Date BLOB,End_Time BLOB,Location BLOB,Notes BLOB)");
-      //database.run("CREATE TABLE if not exists event_owner (EventID INTEGER, Owner INTEGER, FOREIGN KEY(EventID) REFERENCES event(EventID),FOREIGN KEY(Owner) REFERENCES user(UserID))");
-
-    //});
-  }
+dbtools = (function () {
 
   //CreateDatabase function: takes name(string) and returns a new database.
+  //Usage: dbtools.CreateDatabase('thisName');
   function CreateDatabase(name){
     return new sqlite3.Database(name+'.db');
   }
 
   //CreateTable function: Takes dbData(DBData) and adds a new table to the database specified.
+  //Usage: bdtools.CreateTable(thisEmptyData);
   function CreateTable(dbData){
     var valueString = "";
     var values = Object.keys(dbData);
@@ -42,6 +29,7 @@ dbtools = (function (name) {
   }
 
   //InsertData function: Takes dbData(DBData) and inserts it into the specified table.
+  //Usage: dbtools.InsertData(thisData);
   function InsertData(dbData){
     var valueArray = [], dataArray = [];
     var values = Object.keys(dbData);
@@ -54,26 +42,19 @@ dbtools = (function (name) {
     });
   }
 
-  // Coming Soon
-  function SelectData(dbData) {
-    var valueArray = [], dataArray = [];
-    var values = Object.keys(dbData);
-    for(var key in values){
-      valueArray[valueArray.length] = values[key];
-      dataArray[dataArray.length] = dbData[values[key]];
-    }
-    dbData.database.serialize(function(){
-      dbData.database.get("SELECT "+valueArray+" FROM "+dbData.table+" WHERE ID ="+dbData.id+"", function(err, row){
-        //broken code
-        var thisUserData = new dbData.set(row[0], row[1], row[2], row[3], row[4], row[5], row[6]);
-        console.log(thisUserData);
-      });
+  //SelectData function: Takes id(number), database(sqlite3.database), table(string), and a callback function to pull data from the specified table/database at the specified id.
+  //Usage: dbtools.SelectData(1, thisDatabase, thisTable, function(object) { use 'object' here ];
+  function SelectData(id, database, table, callback) {
+    var rowData = [];
+    database.get("SELECT * FROM "+table+" WHERE ID = "+id+"", function(err, row){
+      if(!err) {
+        var rowKeys = Object.keys(row);
+        for (var keys in rowKeys) {
+          rowData[rowData.length] = row[rowKeys[keys]];
+        }
+        callback(rowData);
+      }
     });
-  }
-
-  // Coming Soon
-  function EditData(dbdata, id){
-
   }
 
   //DBData Constructor: takes database(sqlite3.Database) and table(string)

@@ -5,23 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-var dbtools = require('./public/dbtools.js');
+var dbtools = require('./utils/dbtools.js');
+var GVs = require('./Utils/globalvars.js');
 
 //region ---Dbtools Logic---
 
-//Creates a new Database called usuevents.
-usuevents = dbtools.CreateDatabase('usuevents');
-
-//Inherit DBData for UserData/EventData.
-UserData.prototype = new dbtools.DBData(usuevents, 'userLogin');
-EventData.prototype = new dbtools.DBData(usuevents, 'event');
-UserData.prototype.new = function(firstname, lastname, username, password, confirmpassword, phone, email){return new UserData(firstname, lastname, username, password, confirmpassword, phone, email)};
-
 //Table variables.
-var eventCreator = new EventData('STRING', 'BLOB', 'BLOB', 'BLOB', 'BLOB', 'STRING', 'STRING');
-var userLoginCreator = new UserData('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'BLOB', 'STRING');
+var eventCreator = new GVs.UserData('STRING', 'BLOB', 'BLOB', 'BLOB', 'BLOB', 'STRING', 'STRING');
+var userLoginCreator = new GVs.UserData('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'BLOB', 'STRING');
 
-var testUser= new UserData();
+var testUser= new GVs.UserData();
 testUser.id = 1;
 
 //Creates a new Table for usuevents called event.
@@ -87,34 +80,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-//region ---Custom Constructors---
-
-//UserData Constructor: takes firstname(string), lastname(string), username(string), password(string),confirmpassword(string), phone(string), email(string)
-//and represents the data for a new table/date.
-function UserData(firstname, lastname, username, password, confirmpassword, phone, email){
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.username = username;
-    this.password = password;
-    this.confirmpassword = confirmpassword;
-    this.phone = phone;
-    this.email = email;
-    this.id = null;
-}
-
-//EventData Constructor: takes name(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
-//and represents the data for a new table/data.
-function EventData(name, startDate, startTime, endDate, endTime, location, notes){
-    this.name = name;
-    this.startDate = startDate;
-    this.startTime = startTime;
-    this.endDate = endDate;
-    this.endTime = endTime;
-    this.location = location;
-    this.notes = notes;
-    this.id = null;
-}
-//endregion
 
 module.exports = app;
