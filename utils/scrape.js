@@ -3,7 +3,7 @@
 var cheerio = require('cheerio');
 var request = require('request');
 
-urls = [
+var urls = [
     {
         title: 'hsb',
         url: 'http://huntsman.usu.edu/fjmcenter/htm/'
@@ -19,36 +19,36 @@ urls = [
     }
 ];
 
-eventUrl = 'http://www.usu.edu/calendar/rss/eventcalendar.xml';
-ususaUrl = 'http://www.usu.edu/ususa/calendar/';
+var eventUrl = 'http://www.usu.edu/calendar/rss/eventcalendar.xml';
+var ususaUrl = 'http://www.usu.edu/ususa/calendar/';
 
 var $, calendarItem;
 
 // turns out, USU has a main event calendar rss... doh!
-// request(eventUrl, function(error,response,html) {
-//     if(!error) {
-//         $ = cheerio.load(html, {
-//                 xmlMode: true,
-//                 normalizeWhiteSpace: true
-//         });
-//         var mainCalendar = [];
+ request(eventUrl, function(error,response,html) {
+     if(!error) {
+         $ = cheerio.load(html, {
+                 xmlMode: true,
+                 normalizeWhiteSpace: true
+         });
+         var mainCalendar = [];
 
-//         $('item').each(function(idx,el) {
-//             calendarItem = {};
+         $('item').each(function(idx,el) {
+             calendarItem = {};
 
-//             calendarItem.title = $(el).children('title').text();
-//             calendarItem.link = $(el).children('guid').text();
-//             calendarItem.category = $(el).children('category').text();
-//             calendarItem.description = $(el).children('description').text();
-//             calendarItem.location = $(el).children('location').text();
-//             calendarItem.date = $(el).children('pubDate').text();
+             calendarItem.title = $(el).children('title').text();
+             calendarItem.link = $(el).children('guid').text();
+             calendarItem.category = $(el).children('category').text();
+             calendarItem.description = $(el).children('description').text();
+             calendarItem.location = $(el).children('location').text();
+             calendarItem.date = $(el).children('pubDate').text();
 
-//             mainCalendar.push(calendarItem);
+             mainCalendar.push(calendarItem);
 
-//         });
-//         console.log(mainCalendar);
-//     }
-// });
+         });
+         console.log(mainCalendar);
+     }
+ });
 
 //  ...and USUSA has a calendar of their own
 request(ususaUrl, function(error,reponse,html) {
