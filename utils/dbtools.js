@@ -1,3 +1,9 @@
+/* Purpose: This is a module that allows for easy database manipulation through the project.
+ *
+ * Special Notes: N/A
+ *
+ * Author: Devyn Cyphers; Devcon
+ */
 var sqlite3 = require('sqlite3').verbose();
 
 dbtools = (function () {
@@ -31,8 +37,8 @@ dbtools = (function () {
     var valueArray = [], dataArray = [];
     var values = Object.keys(dbData);
     for(var key in values){
-      valueArray[valueArray.length] = values[key];
-      dataArray[dataArray.length] = dbData[values[key]];
+      valueArray.push(values[key]);
+      dataArray.push(dbData[values[key]]);
     }
     dbData.database.serialize(function(){
       dbData.database.run("INSERT INTO "+dbData.table+" ("+valueArray+") VALUES ("+JSON.stringify(dataArray).replace(/^\[|]$/g, '')+")");
@@ -47,7 +53,7 @@ dbtools = (function () {
       if(!err) {
         var rowKeys = Object.keys(row);
         for (var keys in rowKeys) {
-          rowData[rowData.length] = row[rowKeys[keys]];
+          rowData.push(row[rowKeys[keys]]);
         }
         callback(rowData);
       }
@@ -60,16 +66,21 @@ dbtools = (function () {
     var valueArray = [], dataArray = [], finalArray = [];
     var values = Object.keys(dbData);
     for(var key in values){
-      valueArray[valueArray.length] = values[key];
-      dataArray[dataArray.length] = dbData[values[key]];
+      valueArray.push(values[key]);
+      dataArray.push(dbData[values[key]]);
     }
     for(var key in dataArray){
-      finalArray[finalArray.length] = valueArray[key] +'= '+ JSON.stringify(dataArray[key]).replace(/^\[|]$/g, '');
+      finalArray.push(valueArray[key] +'= '+ JSON.stringify(dataArray[key]).replace(/^\[|]$/g, ''));
     }
     console.log(finalArray.toString());
     dbData.database.serialize(function(){
       dbData.database.run("UPDATE "+dbData.table+" SET "+finalArray.toString()+" WHERE ID = "+dbData.id+"");
     });
+  }
+
+  //Coming soon...
+  function deleteData(id, database, table){
+    database.get("DELETE FROM "+table+" WHERE ID = "+id+"");
   }
 
   //DBData Constructor: takes database(sqlite3.Database) and table(string)
