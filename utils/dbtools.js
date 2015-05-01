@@ -79,7 +79,7 @@ dbtools = (function () {
   }
 
   //Coming soon...
-  function deleteData(id, database, table){
+  function DeleteData(id, database, table){
     database.get("DELETE FROM "+table+" WHERE ID = "+id+"");
   }
 
@@ -95,6 +95,7 @@ dbtools = (function () {
     CreateTable: CreateTable,
     InsertData: InsertData,
     SelectData: SelectData,
+    DeleteData: DeleteData,
     SetData: SetData,
     DBData: DBData
   };
