@@ -1,8 +1,9 @@
-/**
- * Created by Devyn on 4/23/2015.
+/* Purpose: This is a module that provides all of the constructors/variables used within the project
+ *
+ * Special Notes: N/A
+ *
+ * Author: Devyn Cyphers; Devcon
  */
-//Global Variables used on client or server.
-
 var dbtools = require('../Utils/dbtools');
 
 globalvars = (function () {

@@ -1,3 +1,9 @@
+/* Purpose: This is the routes for all of the /events
+ *
+ * Special Notes: N/A
+ *
+ * Author: Devyn Cyphers; Devcon
+ */
 var express = require('express');
 var router = express.Router();
 var dbtools = require('../utils/dbtools');
