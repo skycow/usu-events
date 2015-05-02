@@ -5,7 +5,7 @@ block content
   p There will hopefully be a form to change users here.
   form(name='form',action='/user/edit', method='POST')
     include ./includes/user-form.jade
-    input(type='hidden',value= '#{data.id}', id='id')
+    input(type='hidden',value= '#{data.id}', name='id')
     input(type='reset', value='Clear')
     input(type='submit', value='Update')
   script.
