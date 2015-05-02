@@ -5,16 +5,16 @@ block content
   p There will hopefully be a form to change users here.
   form(name='form',action='/user/edit', method='POST')
     include ./includes/user-form.jade
-    input(type='hidden',value= '#{data.id}', name='id')
+    input(type='hidden',value= '#{data.id}', id='id')
     input(type='reset', value='Clear')
     input(type='submit', value='Update')
   script.
     //Wait for document to load.
     $(document).ready(function(){
       //Fill form with current data.
-      $("[name=firstname]").val('#{data.firstname}');
-      $("[name=lastname]").val('#{data.lastname}');
-      $("[name=username]").val('#{data.username}');
-      $("[name=phone]").val('#{data.phone}');
-      $("[name=email]").val('#{data.email}');
+      $("#firstname").val('#{data.firstname}');
+      $("#lastname").val('#{data.lastname}');
+      $("#username").val('#{data.username}');
+      $("#phone").val('#{data.phone}');
+      $("#email").val('#{data.email}');
     });

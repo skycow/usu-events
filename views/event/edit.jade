@@ -2,20 +2,21 @@ extends ../layout
 
 block content
   h1 Edit - Change An Event
-  form(name='form',action='/event/edit', method='POST')
+  form.form-horizontal.form(id='form',action='/event/edit', method='POST')
     include ./includes/event-form.jade
-    input(type='hidden',value= '#{data.id}', name='id')
-    input(type='reset', value='Clear')
-    input(type='submit', value='Update')
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-danger(type='reset') Clear
+        input(type='hidden',value= '#{data.id}', id='id')
+        button.btn.btn-success(type='submit') Update  
   script.
     //Wait for document to load.
     $(document).ready(function(){
-      $("[name=title]").val('#{data.title}');
-      $("[name=startDate]").val('#{data.startDate}');
-      $("[name=startTime]").val('#{data.startTime}');
-      $("[name=endDate]").val('#{data.endDate}');
-      $("[name=endTime]").val('#{data.endTime}');
-      $("[name=location]").val('#{data.location}');
-      $("[name=notes]").val('#{data.notes}');
-
+      $("#title").val('#{data.title}');
+      $("#startDate").val('#{data.startDate}');
+      $("#startTime").val('#{data.startTime}');
+      $("#endDate").val('#{data.endDate}');
+      $("#endTime").val('#{data.endTime}');
+      $("#location").val('#{data.location}');
+      $("#notes").val('#{data.notes}');
     });

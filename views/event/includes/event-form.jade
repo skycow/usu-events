@@ -1,28 +1,42 @@
-| title:
-br
-input(type='text', name='title', required=true)
-br
-|   Start date:
-br
-input(type='date', name='startDate', required=true)
-br
-|   Start time:
-br
-input(type='time', name='startTime')
-br
-|   end date:
-br
-input(type='date', name='endDate', required=true)
-br
-|   end time:
-br
-input(type='time', name='endTime')
-br
-|   place:
-br
-input(type='text', name='location', required=true)
-br
-|   notes:
-br
-input(type='text', name='notes')
-br
+.form-group
+  label.col-sm-2.control-label(for='title') Event Title:
+  | 
+  .col-sm-4
+    input#title.form-control(type='text', placeholder='Event Title')
+| 
+.form-group
+  label.col-sm-2.control-label(for='startDate') Start Date:
+  | 
+  .col-sm-4
+    input#startDate.form-control(type='date', required=true)
+| 
+.form-group
+  label.col-sm-2.control-label(for='startTime') Start Time:
+  | 
+  .col-sm-4
+    input#startTime.form-control(type='time')
+| 
+.form-group
+  label.col-sm-2.control-label(for='endDate')
+  | 
+  .col-sm-4
+    input#endDate.form-control(type='date', required=true)
+| 
+.form-group
+  label.col-sm-2.control-label(for='endTime')
+  | 
+  .col-sm-4
+    input#endTime.form-control(type='time', required=true)
+| 
+.form-group
+  label.col-sm-2.control-label(for='location')
+  | 
+  .col-sm-4
+    input#location.form-control(type='text', required=true)
+| 
+.form-group
+  label.col-sm-2.control-label(for='notes')
+  | 
+  .col-sm-4
+    input#notes.form-control(type='text')
+| 
