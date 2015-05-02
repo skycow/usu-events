@@ -12,9 +12,9 @@ block content
     //Wait for document to load.
     $(document).ready(function(){
       //Fill form with current data.
-      $("[name=firstname]").val('#{data.firstname}');
-      $("[name=lastname]").val('#{data.lastname}');
-      $("[name=username]").val('#{data.username}');
-      $("[name=phone]").val('#{data.phone}');
-      $("[name=email]").val('#{data.email}');
+      $("#firstname").val('#{data.firstname}');
+      $("#lastname").val('#{data.lastname}');
+      $("#username").val('#{data.username}');
+      $("#phone").val('#{data.phone}');
+      $("#email").val('#{data.email}');
     });

@@ -57,7 +57,6 @@ router.post('/new', function(req, res, next) {
 });
 
 //POST events/edit
-// NOTE: dbtools.editData under construction.
 router.post('/edit', function(req, res, next){
   var thisEventData = new GVs.EventData(req.body.title, req.body.startDate, req.body.startTime, req.body.endDate, req.body.endTime, req.body.location, req.body.notes);
   thisEventData.id = req.body.id;
