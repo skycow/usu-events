@@ -22,7 +22,7 @@ router.get('/new', function(req, res, next) {
 
 /* GET events/event */
 router.get('/view', function(req, res, next) {
-  res.render('event/view');
+  res.send('GET /view');
 });
 
 /* GET events/edit */

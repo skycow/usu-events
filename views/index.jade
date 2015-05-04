@@ -7,89 +7,22 @@ block content
         .media-left
           i.fa.fa-calendar.fa-3x
         .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
+          h4.media-heading.list-group-item-heading#title
+          p.list-group-item-text#notes
     a.list-group-item(href='#')
       .media
         .media-left
           i.fa.fa-calendar.fa-3x
         .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
-    a.list-group-item.inactive(href='#')
-      .media
-        .media-left
-          i.fa.fa-calendar.fa-3x
-        .media-body
-          h4.media-heading.list-group-item-heading Event Heading
-          p.list-group-item-text This is a brief and dull description.
+          h4.media-heading.list-group-item-heading#title
+          p.list-group-item-text#notes 
+script.
+  $(document).ready(function(){
+    $("#title").append('#{data.title}');
+    $("#startDate").append('#{data.startDate}');
+    $("#startTime").append('#{data.startTime}');
+    $("#endDate").append('#{data.endDate}');
+    $("#endTime").append('#{data.endTime}');
+    $("#location").append('#{data.location}');
+    $("#notes").append('#{data.notes}');
+  });

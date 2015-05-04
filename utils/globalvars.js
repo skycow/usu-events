@@ -23,7 +23,7 @@ globalvars = (function () {
         this.confirmpassword = confirmpassword;
         this.phone = phone;
         this.email = email;
-        this.id = null;
+        //this.id = null; -- this id is created automatically by the database
     };
 
 //EventData Constructor: takes title(string), startDate(string), starteTime(string), endDate(string), endTime(string), location(string), notes(string)
@@ -36,7 +36,7 @@ globalvars = (function () {
         this.endTime = endTime;
         this.location = location;
         this.notes = notes;
-        this.id = null;
+        //this.id = null; -- this id is created automatically by the database
     };
 
 //Inherit DBData for UserData/EventData.

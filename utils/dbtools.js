@@ -60,6 +60,20 @@ dbtools = (function () {
     });
   }
 
+  // Select All Events
+  function selectEvents(database, callback) {
+    var rowData = [];
+    database.get("SELECT * FROM events WHERE startDate >= date('now') ORDER BY startDate", function(err,row){
+      if(!err) {
+        var rowKeys = Object.keys(row);
+        for (var keys in rowKeys) {
+          rowData.push(row[rowKeys[keys]]);
+        }
+        callback(rowData);
+      }
+    });
+  }
+
   //SetData function: takes dbData(DBData) and sets the data located at its id to this new set.
   //Usage: dbtools.setData(thisData);
   function SetData(dbData){
@@ -95,6 +109,7 @@ dbtools = (function () {
     CreateTable: CreateTable,
     InsertData: InsertData,
     SelectData: SelectData,
+    selectEvents: selectEvents,
     DeleteData: DeleteData,
     SetData: SetData,
     DBData: DBData

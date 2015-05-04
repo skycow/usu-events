@@ -1,8 +1,9 @@
 extends ../layout
 
 block content
-  h1 Post an event
-  form(id='form',action='/event/new', method='POST')
+  h1 Create a New Event
+  form(id='form',action='/event/new', method='POST').form-horizontal
     include ./includes/event-form.jade
-    input(type='reset', value ='Clear')
-    input(type='submit', value='Submit')
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-primary(type='submit') Create Event

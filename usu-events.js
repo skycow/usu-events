@@ -11,8 +11,8 @@ var GVs = require('./utils/globalvars');
 //region ---Dbtools Logic---
 
 //Table variables.
-var eventCreator = new GVs.UserData('STRING', 'BLOB', 'BLOB', 'BLOB', 'BLOB', 'STRING', 'STRING');
-var userLoginCreator = new GVs.UserData('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'BLOB', 'STRING');
+var eventCreator = new GVs.EventData('TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT');
+var userLoginCreator = new GVs.UserData('TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'BLOB', 'TEXT');
 
 //Creates a new Table for usuevents called event.
 dbtools.CreateTable(eventCreator);

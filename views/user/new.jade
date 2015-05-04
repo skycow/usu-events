@@ -1,13 +1,21 @@
 extends ../layout
 
 block content
-  h1 Create your USU Events Account
-  p There will hopefully be a form to create a new user here.
+  h1 Login
+  p Enter your A Number to Login
   form.form-horizontal.form(id='form',action='/user/new', method='POST')
-    include ./includes/user-form.jade
+    // include ./includes/user-form.jade
+    .form-group
+      label.col-sm-2.control-label(for='username') USU A#: 
+      |           
+      .col-sm-4
+        input#username.form-control(type='text', name='username', placeholder='johndoe')
+    |         
+    .form-group
+      label.col-sm-2.control-label(for='password') Password: 
+      |           
+      .col-sm-4
+        input#password.form-control(type='password', name='password', placeholder='Password')
     .form-group
       .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type='reset') Clear
-    .form-group
-      .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type='submit') Sign Up
+        button.btn.btn-primary(type='submit') Login
