@@ -45,11 +45,21 @@ dbtools = (function () {
     });
   }
 
-  //SelectData function: Takes id(number), database(sqlite3.database), table(string), and a callback function to pull data from the specified table/database at the specified id.
-  //Usage: dbtools.SelectData(1, thisDatabase, thisTable, function(object) { use 'object' here ];
-  function SelectData(id, database, table, callback) {
-    var rowData = [];
-    database.get("SELECT * FROM "+table+" WHERE ID = "+id+"", function(err, row){
+  //SelectData function: Takes dbData(DBData) and a callback function to pull data from the specified table/database at the specified id.
+  //Usage: for everything at id: var thisData = new GVs.UserData(null,null,null,null,null,null,null); thisData.id = req.params.id;
+  //Usage: for select objects at id: var thisData = new GVs.UserData(firstname, null, username, null, null, phone, email); thisData.id = req.params.id;
+  //Usage: for everything in table: var thisData = new GVs.UserData(null,null,null,null,null,null,null);
+  //Usage: dbtools.SelectData(thisData, function(object) { use 'object' here ];
+  function SelectData(dbData, callback) {
+    var rowData = [], idString = " WHERE ID = "+dbData.id, finalArray = [];
+    if(dbData.id === null){idString = "";}
+    for(var key in Object.keys(dbData)){
+      if(dbData[key] != null) {
+        finalArray.push(dbData[key]);
+      }
+    }
+    if(finalArray.length < 1){finalArray = "*";}
+    dbData.database.get("SELECT "+finalArray.toString()+" FROM "+dbData.table+""+idString, function(err, row){
       if(!err) {
         var rowKeys = Object.keys(row);
         for (var keys in rowKeys) {
@@ -72,7 +82,6 @@ dbtools = (function () {
     for(var key in dataArray){
       finalArray.push(valueArray[key] +'= '+ JSON.stringify(dataArray[key]).replace(/^\[|]$/g, ''));
     }
-    console.log(finalArray.toString());
     dbData.database.serialize(function(){
       dbData.database.run("UPDATE "+dbData.table+" SET "+finalArray.toString()+" WHERE ID = "+dbData.id+"");
     });

@@ -27,9 +27,10 @@ router.get('/view', function(req, res, next) {
 
 /* GET events/edit */
 router.get('/edit/:id([0-9]+)', function(req, res, next) {
-  var thisData = new GVs.EventData();
   //NOTE: This could be optimized.
-  dbtools.SelectData(req.params.id, thisData.database, thisData.table, function(object){
+  var thisData = new GVs.EventData(null,null,null,null,null,null,null);
+  thisData.id = req.params.id;
+  dbtools.SelectData(thisData, function(object){
     thisData.id = object[0];
     thisData.title = object[1];
     thisData.startDate = object[2];
