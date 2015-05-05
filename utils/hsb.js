@@ -5,45 +5,39 @@
 var cheerio = require('cheerio');
 var request = require('request');
 
-var url = 'http://huntsman.usu.edu/fjmcenter/htm/' +
-            'calendar/displayBy=next10/rss=true';
-var $, item;
-var calendar = [];
+var hsb = (function() {
+	var calendar = [];
+	function init() {
+		var url = 'http://huntsman.usu.edu/fjmcenter/htm/' +
+		            'calendar/displayBy=next10/rss=true';
+		var $, item;
+		request(url, function(error, resp, html) {
+			if(!error) {
+		         $ = cheerio.load(html, { 
+		                 xmlMode: true,
+		                 normalizeWhitespace: true
+		             });
+		
+		         $('item').each(function(idx,el) {
+		             item = {};
+		             item.title = $(el).children('title').text();
+		             item.link = $(el).children('link').text();
+		             item.description = $(el).children('description').text();
+		             item.date = $(el).children('pubDate').text();
+//					 console.log(item);
+		             calendar.push(item);
+		         });
+				 console.log("inside request:", calendar);
+				 hsb.calendar = calendar;
+		    }
+		});
+		// omg, calendar, where are you going!?!?!
+		console.log("outside request", calendar);
+		return calendar;
+	};
+	return {
+		feed: init
+	};
+}) ();
 
-exports.hsbFeed = function hsbFeed() {
-	request(url, function(error, resp, html) {
-		if(!error) {
-	         $ = cheerio.load(html, { 
-	                 xmlMode: true,
-	                 normalizeWhitespace: true
-	             });
-	
-	         $('item').each(function(idx,el) {
-	             item = {};
-	
-	             item.title = $(el).children('title').text();
-	             item.link = $(el).children('link').text();
-	             item.description = $(el).children('description').text();
-	             item.date = $(el).children('pubDate').text();
-	
-	             calendar.push(item);
-	         });
-	    }
-	});
-	console.log("hsb calendar");
-	console.log(calendar);
-	return calendar;
-};
-
-//var hsbFeed = function hsbFeed() {
-//	var options = {
-//		host: 'http://huntsman.usu.edu',
-//		port: 80,
-//		path: '/fjmcenter/htm/' +
-//            'calendar/displayBy=next10/rss=true'
-//	};
-//	http.get(options, function(resp) {
-//		console.log(arguments);
-//		console.log("STATUS: ",resp.statusCode);
-//	});
-//};
+module.exports = hsb;
