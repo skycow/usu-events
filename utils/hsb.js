@@ -10,7 +10,7 @@ var url = 'http://huntsman.usu.edu/fjmcenter/htm/' +
 var $, item;
 var calendar = [];
 
-var hsbFeed = function hsbFeed() {
+exports.hsbFeed = function hsbFeed() {
 	request(url, function(error, resp, html) {
 		if(!error) {
 	         $ = cheerio.load(html, { 
@@ -29,6 +29,21 @@ var hsbFeed = function hsbFeed() {
 	             calendar.push(item);
 	         });
 	    }
-	});		
+	});
+	console.log("hsb calendar");
+	console.log(calendar);
 	return calendar;
 };
+
+//var hsbFeed = function hsbFeed() {
+//	var options = {
+//		host: 'http://huntsman.usu.edu',
+//		port: 80,
+//		path: '/fjmcenter/htm/' +
+//            'calendar/displayBy=next10/rss=true'
+//	};
+//	http.get(options, function(resp) {
+//		console.log(arguments);
+//		console.log("STATUS: ",resp.statusCode);
+//	});
+//};
