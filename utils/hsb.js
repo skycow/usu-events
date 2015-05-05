@@ -5,9 +5,10 @@
 var cheerio = require('cheerio');
 var request = require('request');
 
-var hsb = (function() {
-	var calendar = [];
-	function init() {
+
+hsb = (function() {
+	function init(callback) {
+		var calendar = [];
 		var url = 'http://huntsman.usu.edu/fjmcenter/htm/' +
 		            'calendar/displayBy=next10/rss=true';
 		var $, item;
@@ -28,12 +29,11 @@ var hsb = (function() {
 		             calendar.push(item);
 		         });
 				 console.log("inside request:", calendar);
-				 hsb.calendar = calendar;
 		    }
 		});
 		// omg, calendar, where are you going!?!?!
 		console.log("outside request", calendar);
-		return calendar;
+		callback(calendar);
 	};
 	return {
 		feed: init
