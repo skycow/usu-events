@@ -3,20 +3,18 @@ extends ../layout
 block content
   h1 Edit - Change Your Profile
   p There will hopefully be a form to change users here.
-  form(id='form',action='')
+  form(name='form',action='/user/edit', method='POST')
     include ./includes/user-form.jade
+    input(type='hidden',value= '#{data.id}', name='id')
     input(type='reset', value='Clear')
     input(type='submit', value='Update')
   script.
     //Wait for document to load.
     $(document).ready(function(){
-    //Once form is submitted thisUserData (UserData) is created.
-      $('#form').submit(function(){
-        // creates the variable thisUserData as a new UserData.
-        var thisUserData = new UserData($('#firstname').val(), $('#lastname').val(), $('#username').val(), $('#password').val(), $('#confirmpassword').val(), $('#phone').val(), $('#email').val());
-        //POST call; Sends thisUserData and alerts that a user was updated.
-        $.post('/user/edit', {userFormData: thisUserData}, function(data){
-          alert("User updated!");
-        });
-      });
+      //Fill form with current data.
+      $("#firstname").val('#{data.firstname}');
+      $("#lastname").val('#{data.lastname}');
+      $("#username").val('#{data.username}');
+      $("#phone").val('#{data.phone}');
+      $("#email").val('#{data.email}');
     });

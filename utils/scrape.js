@@ -9,9 +9,4 @@ var eng = require('./eng.js');
 
 // Documentation is forthcoming.
 
-var hsbFeed = hsb.feed();
-//console.log("hsb", hsb.feed());
-//console.log(hsbFeed);
 
-//var engFeed = eng.feed();
-//console.log("eng", engFeed);

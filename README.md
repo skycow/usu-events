@@ -1,4 +1,6 @@
 # USU Events App
+- Current Status: [![Build Status](https://travis-ci.org/hackUSU/usu-events.svg?branch=master)](https://travis-ci.org/hackUSU/usu-events)
+
 
 ### Quick Start
 
