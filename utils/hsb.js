@@ -5,39 +5,33 @@
 var cheerio = require('cheerio');
 var request = require('request');
 
-var hsb = (function() {
-	var calendar = [];
-	function init() {
+feed = {
+	reqCb: function reqCb(error,response,html) {
+		if(error) { return console.log(error); }	
+		var cal = [];
+		var $, item;
+		$ = cheerio.load(html, { 
+		     xmlMode: true,
+		     normalizeWhitespace: true
+		 });
+		
+		$('item').each(function(idx,el) {
+			item = {};
+			item.title = $(el).children('title').text();
+			item.link = $(el).children('link').text();
+			item.description = $(el).children('description').text();
+			item.date = $(el).children('pubDate').text();
+			cal.push(item);
+		});
+		console.log("\n\ninside request callback:%s\n\n", cal);
+		return cal;
+	},
+	init: function init(cb) {
 		var url = 'http://huntsman.usu.edu/fjmcenter/htm/' +
 		            'calendar/displayBy=next10/rss=true';
-		var $, item;
-		request(url, function(error, resp, html) {
-			if(!error) {
-		         $ = cheerio.load(html, { 
-		                 xmlMode: true,
-		                 normalizeWhitespace: true
-		             });
-		
-		         $('item').each(function(idx,el) {
-		             item = {};
-		             item.title = $(el).children('title').text();
-		             item.link = $(el).children('link').text();
-		             item.description = $(el).children('description').text();
-		             item.date = $(el).children('pubDate').text();
-//					 console.log(item);
-		             calendar.push(item);
-		         });
-				 console.log("inside request:", calendar);
-				 hsb.calendar = calendar;
-		    }
-		});
-		// omg, calendar, where are you going!?!?!
-		console.log("outside request", calendar);
-		return calendar;
-	};
-	return {
-		feed: init
-	};
-}) ();
+		var self = this;
+		cb(return request(url,self.reqCb));
+	},	
+};
 
-module.exports = hsb;
+module.exports = feed;
