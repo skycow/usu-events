@@ -6,8 +6,32 @@ html
     script(src='/assets/jquery/dist/jquery.min.js')
     // Stylesheets
     link(rel='stylesheet', href='/assets/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/assets/bootstrap/dist/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    // Fonts
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/assets/fontawesome/css/font-awesome.min.css')
     // Bootstrap
     script(src='/assets/bootstrap/dist/js/bootstrap.min.js')
   body
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            i.fa.fa-bars
+          a.navbar-brand(href='#')
+            img(src='/images/usu-logo.png', alt='USU Events')
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='userLogin.html')
+                i.fa.fa-sign-in.fa-icon
+                | Login / Sign Up
+            li
+              a(href='eventCreation.html')
+                i.fa.fa-plus.fa-icon
+                | Add Event
+            li
+              a(href='#')
+                i.fa.fa-question-circle.fa-icon
+                | About
     block content

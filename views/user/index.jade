@@ -7,18 +7,23 @@ block content
   br
   div.container
     h2 Admin Controls
-    a(href='user/new').btn.btn-default Create New User
-    //-table.table.table-striped
+    a(href='user/new').btn.btn-primary Create New User
+    table.table.table-striped.user-table
       thead
         tr
-          th Username
-          th Actions
+          th Username 
+          th.user-table-actions Actions
       tbody
         tr
-          td 
+          td Dummy User 1
+          td.user-table-actions
+            a(href='user/edit').user-action-button.btn.btn-sm.btn-success Edit
+            a(href='user/view').user-action-button.btn.btn-sm.btn-info View
+            a(href='user/delete').user-action-button.btn.btn-sm.btn-danger Destroy
         tr
-          td 
-            a(href='edit') Edit | 
-            a(href='view') View | 
-            a(href='destroy') Destroy | 
+          td Dummy User 2
+          td.user-table-actions 
+            a(href='user/edit').user-action-button.btn.btn-sm.btn-success Edit
+            a(href='user/view').user-action-button.btn.btn-sm.btn-info View
+            a(href='user/delete').user-action-button.btn.btn-sm.btn-danger Destroy
           

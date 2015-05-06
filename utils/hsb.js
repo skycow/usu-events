@@ -30,7 +30,7 @@ feed = {
 		var url = 'http://huntsman.usu.edu/fjmcenter/htm/' +
 		            'calendar/displayBy=next10/rss=true';
 		var self = this;
-		cb(return request(url,self.reqCb));
+		request(url,self.reqCb);
 	},	
 };
 
