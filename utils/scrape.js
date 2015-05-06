@@ -7,11 +7,11 @@ var hsb = require('./hsb');
 //require('./cca.js');
 //require('./ususa.js');
 
-var hsbFeed = hsb.init(function() {
-	console.log("feed args:", arguments);
+hsb.init(function(calObj) {
+	console.log("scrape hsb callback:\n",calObj,"\n\n");
 });
-console.log("hsb:",hsb);
-console.log(hsbFeed);
+//console.log("hsb:",hsb);
+//console.log(hsbFeed);
 
 //var engFeed = eng.feed();
 //console.log("eng", engFeed);
