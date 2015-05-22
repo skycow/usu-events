@@ -5,39 +5,30 @@
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" href="custom.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
-  <!-- Nav Bar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          <img src="usu-logo.png" alt="USU Events">
-        </a>
-      </div>
-        <ul class="nav navbar-nav">
-            <li><a href="frontendNonRegistered.html">Home</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="Categories.html">Categories</a></li>
-            <li><a href="userLogin.html">Login</a></li>
-            <li><a href="new-user.html">Create New User</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="eventCreation.html">Add Event</a></li>
-        </ul>
-        <form class="navbar-form navbar-right">
-          <input type="text" class="form-control" placeholder="Search...">
-          <button type="submit" class="btn btn-default">
-              <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-          </button>
-        </form>
+<!-- Nav Bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="appHome.html">
+                <img src="usu-logo.png" alt="USU Events" />
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <!-- Menu Stuffs -->
+            <ul class="nav navbar-nav">
+                <li><a href="userLogin.html"><i class="fa fa-sign-in fa-icon"></i>Login / Sign Up</a></li>
+                <li><a href="eventCreation.html"><i class="fa fa-plus fa-icon"></i>Add Event</a></li>
+                <li><a href="#"><i class="fa fa-question-circle fa-icon"></i>About</a></li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
 <div class="col-md-12">
 </div>
