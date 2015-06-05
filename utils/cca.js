@@ -9,7 +9,7 @@ var url = "http://cca.usu.edu/events/";
 var $, item;
 var calendar = [];
 
-var ccaFeed = function ccaFeed() {
+(function ccaFeed() {
 	request(url, function(error, resp, html) {
 		if(!error) {
 			$ = cheerio.load(html, {
@@ -17,18 +17,40 @@ var ccaFeed = function ccaFeed() {
     	         decodeEntities: true
 	         });
 
-			$('.rssFeed').each(function(idx,el) {
+			$('.rssFeed').each(function(index,el) {
             	item = {};
                 item.link = $(el).children('h3').children('a').attr('href');
                 item.title = $(el).children('h3').children('a').html();
+			
+//				console.log(el);
+				
+                $(el).find('p').each(function(idx,nestEl) {
 
-//                $(el).children('p').each(function(idx,nestEl) {
-//                    content = $(nestEl).html();
-
+					content = $(nestEl)[0].lastChild.data;
+					
+					if (idx === 0 {; // Date
+					
+					} else if (idx === 1) {; // Description
+					
+					} else if (idx === 3) {; // Is this a Long Description or a Location???
+					
+					}
 //                 // if(content)
 
-//                 console.log(content);
-//             });
+                 console.log(content, idx);
+             });
+
+			// *** The lines below will get down into the strings of the p tags, skipping the <strong> tag inside.
+			//$('.rssFeed').each(function (index, el) {
+			//  console.log($(el).find('p').length);
+			//  console.group();
+			//    $(el).find('p').each(function (idx, nestEl) {
+			//      x = $(nestEl)[0].lastChild.data;
+			//      
+			//      console.log(x, idx);
+			//    });
+			//  console.groupEnd();
+			//});
 
 //             // console.log(calendarItem);
 
@@ -46,4 +68,4 @@ var ccaFeed = function ccaFeed() {
 		}
 	});		
 	return calendar;
-};
+}) ();
