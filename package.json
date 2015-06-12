@@ -14,8 +14,15 @@
     "express": "~4.11.1",
     "jade": "~1.9.1",
     "morgan": "~1.5.1",
+    "react": "^0.13.3",
     "request": "^2.55.0",
     "serve-favicon": "~2.2.0",
     "sqlite3": "^3.0.5"
+  },
+  "devDependencies": {
+    "jsx-loader": "^0.13.2",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0"
   }
 }
