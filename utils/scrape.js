@@ -62,7 +62,8 @@ function engInit(callback) {
 //};
 
 var hsbFeed = hsbInit(function(resp) {
-	console.log("\n\nInside callback of hsbInit\n",resp);
+	//console.log("\n\nInside callback of hsbInit\n",resp);
+	resp;
 });
 var engFeed = engInit(function(resp) {
 	console.log("\n\nInside callback of engInit\n",resp);
