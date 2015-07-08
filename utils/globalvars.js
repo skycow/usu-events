@@ -4,7 +4,7 @@
  *
  * Author: Devyn Cyphers; Devcon
  */
-var dbtools = require('../Utils/dbtools');
+var dbtools = require('./dbtools');
 
 globalvars = (function () {
 
